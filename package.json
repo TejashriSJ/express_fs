@@ -1,0 +1,27 @@
+{
+  "name": "express_fs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.cjs",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/TejashriSJ/express_fs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/TejashriSJ/express_fs/issues"
+  },
+  "homepage": "https://gitlab.com/TejashriSJ/express_fs#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "http-errors": "^2.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
