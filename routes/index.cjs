@@ -12,7 +12,7 @@ router.post("/", (req, res) => {
       Message: "Provide proper format of post object",
       format: {
         dirName: "Directory Name",
-        files: ["Array of file names"],
+        files: ["Array of file names without extension"],
       },
     };
 
@@ -80,7 +80,7 @@ router.delete("/", (req, res) => {
       Message: "Provide proper format of delete object",
       format: {
         dirName: "Directory Name",
-        files: ["Array of file names"],
+        files: ["Array of file names without extension"],
       },
     };
 
