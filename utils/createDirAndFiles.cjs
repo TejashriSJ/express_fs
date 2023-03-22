@@ -1,12 +1,13 @@
-const fs = require("fs/promises");
+const fsPromises = require("fs/promises");
 const path = require("path");
 
 function createDirAndFiles(dirName, files) {
   return new Promise((resolve, reject) => {
-    fs.mkdir(path.join(__dirname, "userCreatedFiles/", dirName))
+    fsPromises
+      .mkdir(path.join(__dirname, "userCreatedFiles/", dirName))
       .then(() => {
         let creatingFilesPromises = files.map((file) => {
-          return fs.writeFile(
+          return fsPromises.writeFile(
             path.join(__dirname, "userCreatedFiles/", dirName, file + ".json"),
             ""
           );

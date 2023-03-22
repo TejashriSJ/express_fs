@@ -1,4 +1,4 @@
-const fs = require("fs/promises");
+const fsPromises = require("fs/promises");
 const path = require("path");
 
 function deleteFiles(dirName, files) {
@@ -10,7 +10,7 @@ function deleteFiles(dirName, files) {
         dirName,
         file + ".json"
       );
-      return fs.unlink(filePath);
+      return fsPromises.unlink(filePath);
     });
     Promise.allSettled(delteFilesPromises)
       .then((settledPromises) => {
