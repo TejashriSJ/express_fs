@@ -7,7 +7,7 @@ function createDirAndFiles(dirName, files) {
       .then(() => {
         let creatingFilesPromises = files.map((file) => {
           return fs.writeFile(
-            path.join(__dirname, "userCreatedFiles/", dirName, file),
+            path.join(__dirname, "userCreatedFiles/", dirName, file + ".json"),
             ""
           );
         });

@@ -4,7 +4,12 @@ const path = require("path");
 function deleteFiles(dirName, files) {
   return new Promise((resolve, reject) => {
     let delteFilesPromises = files.map((file) => {
-      let filePath = path.join(__dirname, "userCreatedFiles/", dirName, file);
+      let filePath = path.join(
+        __dirname,
+        "userCreatedFiles/",
+        dirName,
+        file + ".json"
+      );
       return fs.unlink(filePath);
     });
     Promise.allSettled(delteFilesPromises)
