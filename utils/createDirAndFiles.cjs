@@ -9,12 +9,14 @@ function createDirAndFiles(dirName, files) {
       })
       .then(() => {
         return fsPromises.readdir(
-          path.join(__dirname, "userCreatedFiless/", dirName)
+          path.join(__dirname, "userCreatedFiles/", dirName)
         );
       })
       .then((filesInsideDir) => {
         let creatingFilesPromises = files.map((file) => {
-          if (filesInsideDir.includes(file + ".json")) {
+          if (typeof file === "string" && file.includes("/")) {
+            return Promise.reject(`${file} Not string or contains / `);
+          } else if (filesInsideDir.includes(file + ".json")) {
             return Promise.reject(`${file} File exist`);
           } else {
             return fsPromises.writeFile(
