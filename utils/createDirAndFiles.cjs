@@ -4,16 +4,34 @@ const path = require("path");
 function createDirAndFiles(dirName, files) {
   return new Promise((resolve, reject) => {
     fsPromises
-      .mkdir(path.join(__dirname, "userCreatedFiles/", dirName))
+      .mkdir(path.join(__dirname, "userCreatedFiles/", dirName), {
+        recursive: true,
+      })
       .then(() => {
+        return fsPromises.readdir(
+          path.join(__dirname, "userCreatedFiless/", dirName)
+        );
+      })
+      .then((filesInsideDir) => {
         let creatingFilesPromises = files.map((file) => {
-          return fsPromises.writeFile(
-            path.join(__dirname, "userCreatedFiles/", dirName, file + ".json"),
-            ""
-          );
+          if (filesInsideDir.includes(file + ".json")) {
+            return Promise.reject(`${file} File exist`);
+          } else {
+            return fsPromises.writeFile(
+              path.join(
+                __dirname,
+                "userCreatedFiles/",
+                dirName,
+                file + ".json"
+              ),
+              ""
+            );
+          }
         });
+
         return Promise.allSettled(creatingFilesPromises);
       })
+
       .then((settledPromises) => {
         resolve(settledPromises);
       })
