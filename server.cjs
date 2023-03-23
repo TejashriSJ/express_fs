@@ -12,7 +12,6 @@ server.use(express.urlencoded({ extended: false }));
 server.post("/", routerPostRequest);
 server.delete("/", routerDeleteRequest);
 
-//catch 404 and forward to error handler
 server.use((req, res, next) => {
   next(createError(404));
 });
